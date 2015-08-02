@@ -61,3 +61,5 @@ geovinci.sublime-*
 
 # yes, I'm lazy
 geovinci/settings/local_settings.py
+
+.*.swp
