@@ -2,7 +2,7 @@ from .base import *
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'geovinci',
         'USER': 'geovinci_user',
         'PASSWORD': '',
@@ -13,5 +13,5 @@ DATABASES = {
 
 try:
     from local_settings import *
-except ImportError, e:
+except ImportError:
     pass
