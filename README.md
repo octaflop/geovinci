@@ -7,7 +7,8 @@ Demo app for Python, GeoDjango, and Elastic Search GIS
 
 3. Install more os modules: `sudo apt-get install binutils libproj-dev gdal-bin libgeos-dev`
 
-4. ```
+4. 
+```bash
 add2virtualenv `pwd`/apps
 ```
 
