@@ -17,5 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^$', 'geovinci.views.front.index', name='index'),
+    url(r'nearme/', include('nearme.urls', namespace='nearme')),
+
     url(r'^admin/', include(admin.site.urls)),
 ]
