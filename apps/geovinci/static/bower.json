@@ -1,0 +1,25 @@
+{
+  "name": "geovinci",
+  "version": "0.0.1",
+  "homepage": "https://github.com/octaflop/geovinci",
+  "authors": [
+    "Faris Chebib <faris@zaneprep.com>"
+  ],
+  "description": "Static files for geovinci",
+  "keywords": [
+    "django",
+    "gis"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5",
+    "angular-ui-bootstrap": "~0.13.2"
+  }
+}
