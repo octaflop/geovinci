@@ -1,4 +1,3 @@
-{% load leaflet_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,8 +21,14 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    {% leaflet_js %}
-    {% leaflet_css %}
+    {# {% leaflet_js %} #}
+    {# {% leaflet_css %} #}
+    <script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+    <style>
+      body { margin:0; padding:0; }
+      #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
   </head>
   <body>
     {% block content %}
@@ -34,6 +39,11 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    {# Mapbox access token #}
+    <script type="text/javascript">
+      var mapbox_access_token = "pk.eyJ1IjoiZm9lbml4IiwiYSI6Ijk1MzJiODk1ODMzNTQwZTcwMmYzMGM5NjBjODQ3YTZjIn0.0V8EPoeyNLXtJSQ1XOi7NA";
+    </script>
     {% block js %}
     {% endblock %}
   </body>

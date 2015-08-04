@@ -129,3 +129,14 @@ HAYSTACK_CONNECTIONS = {
         'PATH': os.path.normpath(os.path.join(BASE_DIR, "..", "..", "whoosh_index")),
     }
 }
+
+# GUI mapping
+
+LEAFLET_CONFIG = {
+    'SPATIAL_EXTENT': (5.0, 44.0, 7.5, 46),
+    'DEFAULT_CENTER': (6.0, 45.0),
+    'DEFAULT_ZOOM': 16,
+    'MIN_ZOOM': 3,
+    'MAX_ZOOM': 18,
+    'TILES': 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+}
