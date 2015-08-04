@@ -1,7 +1,27 @@
 {% extends "_base.html" %}
+{% load leaflet_tags %}
 {% block content %}
-<ul>
-  <li><a href="{% url 'nearme:index' %}">Locations Near Me</a></li>
-  <li><a href=""></a></li>
-</ul>
+<div class="row">
+  <div class="span-col-12">
+    <ul>
+      <li><a href="{% url 'nearme:index' %}">Locations Near Me</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span-col-10">
+    {% leaflet_map "geovinci" %}
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+    window.addEventListener("map:init", function (e) {
+        var detail = e.detail;
+        L.marker([50.5, 30.5]).addTo(detail.map);
+    }, false);
+</script>
+{# {% leaflet_map "geovinci" callback="window.map_init_basic" %} #}
 {% endblock %}

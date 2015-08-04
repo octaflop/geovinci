@@ -14,3 +14,10 @@ Demo app for Python, GeoDjango, and Elastic Search GIS
 
 5. `world` is just the [geodjango tutorial](https://docs.djangoproject.com/en/1.8/ref/contrib/gis/tutorial/#introduction)
 
+
+# External resources
+
+* Django Leaflet
+
+* https://www.mapbox.com/mapbox-studio/#linux
+
