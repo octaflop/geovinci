@@ -63,3 +63,5 @@ geovinci.sublime-*
 geovinci/settings/local_settings.py
 
 .*.swp
+
+globalstatic/
