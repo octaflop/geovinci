@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+REL = lambda * x: os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', *x))
 
 
 # Quick-start development settings - unsuitable for production
@@ -111,8 +112,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "..", "..", "globalstatic")
-MEDIA_ROOT = os.path.normpath(os.path.join(BASE_DIR, "..", "..", "media"))
+STATIC_ROOT = REL("globalstatic")
+STATICFILES_DIRS = (REL('static'),)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
+MEDIA_ROOT = REL("media")
 
 # Haystack settings
 HAYSTACK_CONNECTIONS = {
