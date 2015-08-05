@@ -1,12 +1,8 @@
 {% extends "_base.html" %}
+{% block navcontent %}
+  <li><a href="{% url 'nearme:index' %}">Locations Near Me</a></li>
+{% endblock %}
 {% block content %}
-<div class="row">
-  <div class="span-col-12">
-    <ul>
-      <li><a href="{% url 'nearme:index' %}">Locations Near Me</a></li>
-    </ul>
-  </div>
-</div>
 
 <div class="row">
   <div class="span-col-10">

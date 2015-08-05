@@ -1,10 +1,12 @@
 {% extends "_base.html" %}
 
+{% block navcontent %}
+  <li class="{% if demo == 'index' %}active{% endif %}"><a href="{% url 'nearme:index' %}">Locations Near Me</a></li>
+  <li class="{% if demo == 'coarse' %}active{% endif %}"><a href="{% url 'nearme:coarse' %}">Coarse</a></li>
+  <li class="{% if demo == 'fine' %}active{% endif %}"><a href="{% url 'nearme:fine' %}">Fine</a></li>
+{% endblock %}
+
 {% block content %}
-<ul class="menu">
-  <li><a href="{% url 'nearme:coarse' %}">Coarse</a></li>
-  <li><a href="{% url 'nearme:fine' %}">Fine</a></li>
-</ul>
 
 <div id="info">
   {{ city.city }}
@@ -41,8 +43,10 @@
     });
 
     marker.addTo(map);
-{% else %}
+{% elif demo == "fine" %}
     geoFindMe(map);
+{% else %}
+    map.setView([40.7563925, -111.8985922], 11);
 {% endif %}
 </script>
 {% endblock %}
