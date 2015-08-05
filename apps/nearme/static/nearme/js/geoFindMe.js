@@ -24,7 +24,7 @@ function geoFindMe(map) {
       latlng = marker.getLatLng();
       window.location.href = window.location.origin + window.location.pathname + "?lat=" + latlng.lat + "&lng=" + latlng.lng;
     });
-    output.innerHTML = "<p><code>" + latitude + ", " + longitude + "</code></p>";
+    output.innerHTML = "<p>Location from HTML5: <code>" + latitude + ", " + longitude + "</code></p>";
     marker.addTo(map);
   };
 

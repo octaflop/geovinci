@@ -28,6 +28,7 @@
     <p>
       {{ campus.full_address }}
     </p>
+    <p><b>Distance:</b> {{ campus.distance.mi|floatformat:"1" }} miles</p>
   </div>
   {% endfor %}
 </div>
