@@ -32,7 +32,27 @@
 
   var map = L.map('map')
       .addLayer(mapboxTiles);
-  map.setView([40.7563925, -111.8985922], 11);
+  {% if marker.lat and marker.lng %}
+  var latitude = {{ marker.lat }};
+  var longitude = {{ marker.lng }};
+  map.setView([{{ marker.lat }}, {{ marker.lng }}], 12);
+  var marker = L.marker([latitude, longitude], {
+  icon: L.mapbox.marker.icon({
+    'marker-color': '#31708f'
+    }),
+  draggable: true
+  });
+  console.debug(latitude, longitude);
+
+  marker.on('dragend', function(e){
+    console.debug(marker.getLatLng());
+    latlng = marker.getLatLng();
+    window.location.href = window.location.origin + window.location.pathname + "?lat=" + latlng.lat + "&lng=" + latlng.lng;
+  });
+  marker.addTo(map);
+  {% else %}
   geoFindMe(map);
+  map.setView([40.7563925, -111.8985922], 12);
+  {% endif %}
 </script>
 {% endblock %}

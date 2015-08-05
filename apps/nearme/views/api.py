@@ -33,4 +33,10 @@ def campuses(request):
     ctx['demo'] = "campuses"
     template_name = "nearme/front/campuses.html"
 
+    lat, lng = request.GET.get('lat', None), request.GET.get('lng', None)
+    ctx['marker'] = {}
+    if lat is not None and lng is not None:
+        ctx['marker']['lat'], ctx['marker']['lng'] = lat, lng
+        print(lat, lng)
+
     return render(request, template_name, ctx)
