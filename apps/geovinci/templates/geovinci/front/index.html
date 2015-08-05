@@ -5,8 +5,7 @@
 {% block content %}
 
 <div class="row">
-  <div class="span-col-10">
-    {# {% leaflet_map "geovinci" %} #}
+  <div class="span-col-12">
     <div id="map"></div>
   </div>
 </div>
@@ -14,15 +13,6 @@
 
 {% block js %}
 <script type="text/javascript">
-    // window.addEventListener("map:init", function (e) {
-    //     var detail = e.detail;
-    //     L.mapbox.accessToken = mapbox_access_token;
-    //     var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/foenix.ae02e06f/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
-    //     attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
-    //     });
-
-    //     L.marker([50.5, 30.5]).addTo(detail.map);
-    // }, false);
     L.mapbox.accessToken = mapbox_access_token;
     // Replace 'mapbox.streets' with your map id.
     var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/foenix.ae02e06f/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
@@ -33,5 +23,4 @@
         .addLayer(mapboxTiles)
         .setView([40.7255777, -111.8611107], 15);
 </script>
-{# {% leaflet_map "geovinci" callback="window.map_init_basic" %} #}
 {% endblock %}
