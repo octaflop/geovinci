@@ -17,6 +17,7 @@ function geoFindMe(map) {
       })
     });
     marker.addTo(map);
+    output.innerHTML = "<p>" + latitude + ", " + longitude + "</p>";
   };
 
   function error() {
