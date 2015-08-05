@@ -27,6 +27,14 @@
 
     var map = L.map('map')
         .addLayer(mapboxTiles)
-        .setView([{{ city.latitude }}, {{ city.longitude }}], 15);
+        .setView([{{ city.latitude }}, {{ city.longitude }}], 11);
+
+    var marker = L.marker([{{ city.latitude }}, {{ city.longitude }}], {
+    icon: L.mapbox.marker.icon({
+      'marker-color': '#f86767'
+      })
+    });
+
+    marker.addTo(map);
 </script>
 {% endblock %}
