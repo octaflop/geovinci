@@ -130,6 +130,9 @@ HAYSTACK_CONNECTIONS = {
     }
 }
 
+# GEOIP
+GEOIP_PATH = REL("geoip/")
+
 # GUI mapping
 
 LEAFLET_CONFIG = {

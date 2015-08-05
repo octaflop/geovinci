@@ -1,8 +1,18 @@
 {% extends "_base.html" %}
 
 {% block content %}
-<ul>
-  <li><a href="#course">Course</a></li>
-  <li><a href="#fine">Fine</a></li>
+<ul class="menu">
+  <li><a href="{% url 'nearme:coarse' %}">Coarse</a></li>
+  <li><a href="{% url 'nearme:fine' %}">Fine</a></li>
 </ul>
+
+<div class="info">
+  {{ city.city }}
+</div>
+
+<div id="map">
+  
+</div>
+
+
 {% endblock %}
