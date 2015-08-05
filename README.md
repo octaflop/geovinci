@@ -18,6 +18,8 @@ Demo app for Python, GeoDjango, and Elastic Search GIS
   add2virtualenv `pwd`/apps
   ```
 
+6. Add the correct environment settings to your virutalenv environment file: `~/.virtualenvs/geovinci/postactivate`, add the line: `export DJANGO_SETTINGS_MODULE=geovinci.settings.local`
+
 ## Postgres
 
 1. `sudo su postgres`
@@ -27,6 +29,12 @@ Demo app for Python, GeoDjango, and Elastic Search GIS
 3. Copy `local_settings.example.py` to `local_settings.py` and update the `DATABASES['default']['PASSWORD']` field to your new password.
 
 4. `createdb geovinci -O "geovinci_user"`
+
+5. log into the DB `psql geovinci` and do:
+
+```psql
+create extension postgis;
+```
 
 
 ## Other installation notes
