@@ -9,13 +9,16 @@
 
 {% block content %}
 
-<div id="info">
-  {{ city.city }}
-  {{ city.latitude }}, {{ city.longitude }}
+<div class="col-md-10">
+  <div id="map">
+  </div>
 </div>
 
-<div id="map">
-  
+<div class="col-md-2">
+  <div id="info" class="well">
+    <p>{{ city.city }}</p>
+    <p><code>{{ city.latitude }}, {{ city.longitude }}</code></p>
+  </div>
 </div>
 
 {% endblock %}

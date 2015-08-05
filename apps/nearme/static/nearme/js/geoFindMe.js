@@ -16,8 +16,9 @@ function geoFindMe(map) {
       'marker-color': '#f86767'
       })
     });
+    console.debug(latitude, longitude);
     marker.addTo(map);
-    output.innerHTML = "<p>" + latitude + ", " + longitude + "</p>";
+    output.innerHTML = "<p><code>" + latitude + ", " + longitude + "</code></p>";
   };
 
   function error() {

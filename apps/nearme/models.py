@@ -7,13 +7,17 @@ class CampusLocation(models.Model):
     A general location of the campus
     """
     street_address = models.CharField(max_length=240)
-    additional_address = models.CharField(max_length=240, blank=True)
-    locality = models.CharField(help_text="The city of municipality of the campus", max_length=240)
-    region = models.CharField(help_text="State or Province of the campus (Abbreviation preffered)", max_length=100)
-    telephone = models.CharField(help_text="Phone number of the campus", max_length=50, blank=True)
-    zip_code = models.CharField(help_text="Zip Code or Postal Code of the campus", max_length=10, blank=True)
+    additional_address = models.CharField(
+        max_length=240, blank=True, help_text="Apartment or Suite Number")
+    locality = models.CharField(
+        help_text="The city or municipality of the campus", max_length=240)
+    region = models.CharField(
+        help_text="State or Province of the campus (Abbreviation preffered)", max_length=100)
+    telephone = models.CharField(
+        help_text="Phone number of the campus", max_length=50, blank=True)
+    zip_code = models.CharField(
+        help_text="Zip or Postal Code of the campus", max_length=10, blank=True)
 
-    map_url = models.URLField(help_text='Optional url of a google or other online map of the campus', blank=True, max_length=500)
     lat = models.FloatField(blank=True, null=True)
     lon = models.FloatField(blank=True, null=True)
     point = models.PointField(blank=True, null=True)

@@ -1,0 +1,38 @@
+{% extends "nearme/front/index.html" %}
+
+{% block content %}
+
+<div class="col-md-10">
+  <div id="map">
+  </div>
+</div>
+
+<div class="col-md-2">
+  <h2>Campuses</h2>
+  <div id="info" class="alert alert-info">
+  </div>
+  {% for campus in campus_locations %}
+  <div class="well">
+    <p>{{ city.city }}</p>
+    <p><code>{{ city.latitude }}, {{ city.longitude }}</code></p>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{{ STATIC_URL }}nearme/js/geoFindMe.js"></script>
+<script type="text/javascript">
+    L.mapbox.accessToken = mapbox_access_token;
+  // Replace 'mapbox.streets' with your map id.
+  var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/foenix.ae02e06f/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
+    attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
+  });
+
+  var map = L.map('map')
+      .addLayer(mapboxTiles);
+  map.setView([40.7563925, -111.8985922], 11);
+  geoFindMe(map);
+</script>
+{% endblock %}

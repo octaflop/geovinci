@@ -31,6 +31,6 @@ def fine(request):
 def campuses(request):
     ctx = {}
     ctx['demo'] = "campuses"
-    template_name = "nearme/front/index.html"
+    template_name = "nearme/front/campuses.html"
 
     return render(request, template_name, ctx)
