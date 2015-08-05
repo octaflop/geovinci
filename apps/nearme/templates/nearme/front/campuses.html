@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="col-md-10">
-  <div id="map">
+  <div id="map" class="well">
   </div>
 </div>
 
@@ -15,14 +15,25 @@
       <button type="submit" name="qmethod" value="GeoDjango" class="btn btn-info">GeoDjango</button>
       <button type="submit" name="qmethod" value="Haystack" class="btn btn-success">Haystack</button>
     </div>
+    <input type="hidden" name="lat" value="{{ marker.lat }}" />
+    <input type="hidden" name="lng" value="{{ marker.lng }}" />
   </form>
-  <div id="info" class="alert alert-info">
-  </div>
+  <p><code>{{ marker.lat }}, {{ marker.lng }}</code></p>
+
   {% for campus in campus_locations %}
   <div class="well">
-    <p><code>{{ marker.latitude }}, {{ marker.longitude }}</code></p>
+    <p><code>
+      {{ campus.lat }}, {{ campus.lon }}
+    </code></p>
+    <p>
+      {{ campus.full_address }}
+    </p>
   </div>
   {% endfor %}
+</div>
+<div class="col-md-12">
+  <div id="info" class="">
+  </div>
 </div>
 
 {% endblock %}
@@ -56,6 +67,23 @@
     window.location.href = window.location.origin + window.location.pathname + "?lat=" + latlng.lat + "&lng=" + latlng.lng;
   });
   marker.addTo(map);
+
+  {% if campus_locations %}
+  {# dirty js!  Don't do this unless you're in a hackathon #}
+    {% for campus in campus_locations %}
+      var marker_{{ campus.id }} = L.marker([{{ campus.lat }}, {{ campus.lon }}], {
+        icon: L.mapbox.marker.icon({
+          'marker-color': '#f86767'
+          }),
+        });
+      marker_{{ campus.id }}.addTo(map)
+        .bindPopup(
+          "{{ campus.full_address|escapejs }}"
+          );
+
+    {% endfor %}
+  {% endif %}
+
   {% else %}
   geoFindMe(map);
   map.setView([40.7563925, -111.8985922], 13);

@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.contrib.gis.geoip import GeoIP
+from django.contrib.gis.geos import Point
 
+from nearme.models import CampusLocation
 
 def coarse(request):
     ctx = {}
@@ -30,18 +32,23 @@ def fine(request):
 
 def campuses(request):
     ctx = {}
+    ctx['marker'] = {}
     ctx['demo'] = "campuses"
     template_name = "nearme/front/campuses.html"
 
+    print(request.GET)
     lat, lng = request.GET.get('lat', None), request.GET.get('lng', None)
-    ctx['marker'] = {}
     if lat is not None and lng is not None:
         ctx['marker']['lat'], ctx['marker']['lng'] = lat, lng
 
     query_method = request.GET.get('qmethod', 'geodjango')
-    print(request.GET)
-    print(query_method)
     ctx['qmethod'] = query_method
-    print(ctx)
+
+    if lat is not None and lng is not None:
+        qmethod = query_method.lower()
+        if qmethod == "geodjango":
+            ref_location = Point(float(lng), float(lat))  # because x, y
+            campus_locations = CampusLocation.objects.all().distance(ref_location).order_by('distance')
+            ctx['campus_locations'] = campus_locations
 
     return render(request, template_name, ctx)
