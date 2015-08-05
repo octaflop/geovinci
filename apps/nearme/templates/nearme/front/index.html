@@ -1,9 +1,10 @@
 {% extends "_base.html" %}
 
 {% block navcontent %}
-  <li class="{% if demo == 'index' %}active{% endif %}"><a href="{% url 'nearme:index' %}">Locations Near Me</a></li>
+  <li class="{% if demo == 'index' %}active{% endif %}"><a href="{% url 'nearme:index' %}">Near Me Demo</a></li>
   <li class="{% if demo == 'coarse' %}active{% endif %}"><a href="{% url 'nearme:coarse' %}">Coarse</a></li>
   <li class="{% if demo == 'fine' %}active{% endif %}"><a href="{% url 'nearme:fine' %}">Fine</a></li>
+  <li class="{% if demo == 'campuses' %}active{% endif %}"><a href="{% url 'nearme:campuses' %}">Campuses</a></li>
 {% endblock %}
 
 {% block content %}

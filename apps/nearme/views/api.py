@@ -26,3 +26,11 @@ def fine(request):
     template_name = "nearme/front/index.html"
 
     return render(request, template_name, ctx)
+
+
+def campuses(request):
+    ctx = {}
+    ctx['demo'] = "campuses"
+    template_name = "nearme/front/index.html"
+
+    return render(request, template_name, ctx)
