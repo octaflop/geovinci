@@ -60,7 +60,8 @@ def campuses(request):
                     'lat': s.object.lat,
                     'lon': s.object.lon,
                     'full_address': s.object.full_address,
-                    'id': s.object.id
+                    'id': s.object.id,
+                    'distance': s.distance
                     })
 
 
