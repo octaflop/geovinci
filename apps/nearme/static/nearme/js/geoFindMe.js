@@ -10,7 +10,7 @@ function geoFindMe(map) {
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
 
-    map.setView([latitude, longitude], 12);
+    map.setView([latitude, longitude], 13);
     var marker = L.marker([latitude, longitude], {
     icon: L.mapbox.marker.icon({
       'marker-color': '#31708f'
