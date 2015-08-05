@@ -4,6 +4,7 @@ from django.contrib.gis.geoip import GeoIP
 
 def coarse(request):
     ctx = {}
+    ctx['demo'] = "coarse"
     template_name = "nearme/front/index.html"
 
     ip_addr = request.META['REMOTE_ADDR']
@@ -21,5 +22,7 @@ def coarse(request):
 
 def fine(request):
     ctx = {}
+    ctx['demo'] = "fine"
     template_name = "nearme/front/index.html"
+
     return render(request, template_name, ctx)
