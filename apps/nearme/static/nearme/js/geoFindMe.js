@@ -10,14 +10,22 @@ function geoFindMe(map) {
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
 
-    map.setView([latitude, longitude], 8);
+    map.setView([latitude, longitude], 13);
     var marker = L.marker([latitude, longitude], {
     icon: L.mapbox.marker.icon({
-      'marker-color': '#f86767'
-      })
+      'marker-color': '#31708f'
+      }),
+    draggable: true
     });
+    console.debug(latitude, longitude);
+
+    marker.on('dragend', function(e){
+      console.debug(marker.getLatLng());
+      latlng = marker.getLatLng();
+      window.location.href = window.location.origin + window.location.pathname + "?lat=" + latlng.lat + "&lng=" + latlng.lng;
+    });
+    output.innerHTML = "<p>Location from HTML5: <code>" + latitude + ", " + longitude + "</code></p>";
     marker.addTo(map);
-    output.innerHTML = "<p>" + latitude + ", " + longitude + "</p>";
   };
 
   function error() {

@@ -39,7 +39,8 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
-    'leaflet',
+    'haystack',
+    'leaflet',  # for admin view
 )
 
 LOCAL_APPS = (
@@ -122,12 +123,12 @@ STATICFILES_FINDERS = (
 
 MEDIA_ROOT = REL("media")
 
-# Haystack settings
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': os.path.normpath(os.path.join(BASE_DIR, "..", "..", "whoosh_index")),
-    }
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack_geovinci',
+    },
 }
 
 # GEOIP

@@ -1,0 +1,1 @@
+The `world` app is taken from the [GeoDjango Tutorial](https://docs.djangoproject.com/en/1.8/ref/contrib/gis/tutorial/) and is a good starting-point for more advanced GIS projects.
