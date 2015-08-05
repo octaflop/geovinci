@@ -1,8 +1,48 @@
 {% extends "_base.html" %}
 
 {% block content %}
-<ul>
-  <li><a href="#course">Course</a></li>
-  <li><a href="#fine">Fine</a></li>
+<ul class="menu">
+  <li><a href="{% url 'nearme:coarse' %}">Coarse</a></li>
+  <li><a href="{% url 'nearme:fine' %}">Fine</a></li>
 </ul>
+
+<div id="info">
+  {{ city.city }}
+  {{ city.latitude }}, {{ city.longitude }}
+</div>
+
+<div id="map">
+  
+</div>
+
+{% endblock %}
+
+{% block js %}
+{% if demo == "fine" %}
+<script type="text/javascript" src="{{ STATIC_URL }}nearme/js/geoFindMe.js"></script>
+{% endif %}
+<script type="text/javascript">
+    L.mapbox.accessToken = mapbox_access_token;
+    // Replace 'mapbox.streets' with your map id.
+    var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/foenix.ae02e06f/{z}/{x}/{y}.png?access_token=' + L.mapbox.accessToken, {
+      attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
+    });
+
+    var map = L.map('map')
+        .addLayer(mapboxTiles);
+        
+{% if demo == "coarse" %}
+    map.setView([{{ city.latitude }}, {{ city.longitude }}], 11);
+    
+    var marker = L.marker([{{ city.latitude }}, {{ city.longitude }}], {
+    icon: L.mapbox.marker.icon({
+      'marker-color': '#f86767'
+      })
+    });
+
+    marker.addTo(map);
+{% else %}
+    geoFindMe(map);
+{% endif %}
+</script>
 {% endblock %}
