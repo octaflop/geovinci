@@ -9,12 +9,18 @@
 
 <div class="col-md-2">
   <h2>Campuses</h2>
+  <p><b>Current Method:</b> {{ qmethod }}</p>
+  <form action="." method="GET">
+    <div class="btn-group">
+      <button type="submit" name="qmethod" value="GeoDjango" class="btn btn-info">GeoDjango</button>
+      <button type="submit" name="qmethod" value="Haystack" class="btn btn-success">Haystack</button>
+    </div>
+  </form>
   <div id="info" class="alert alert-info">
   </div>
   {% for campus in campus_locations %}
   <div class="well">
-    <p>{{ city.city }}</p>
-    <p><code>{{ city.latitude }}, {{ city.longitude }}</code></p>
+    <p><code>{{ marker.latitude }}, {{ marker.longitude }}</code></p>
   </div>
   {% endfor %}
 </div>

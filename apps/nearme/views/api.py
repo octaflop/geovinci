@@ -37,6 +37,11 @@ def campuses(request):
     ctx['marker'] = {}
     if lat is not None and lng is not None:
         ctx['marker']['lat'], ctx['marker']['lng'] = lat, lng
-        print(lat, lng)
+
+    query_method = request.GET.get('qmethod', 'geodjango')
+    print(request.GET)
+    print(query_method)
+    ctx['qmethod'] = query_method
+    print(ctx)
 
     return render(request, template_name, ctx)
