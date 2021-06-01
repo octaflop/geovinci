@@ -8,4 +8,4 @@ haystack==0.15
 ipython==3.2.1
 psycopg2==2.6.1
 python-ptrace==0.8.1
-urllib3==1.11
+urllib3==1.26.5
