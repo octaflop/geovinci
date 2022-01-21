@@ -5,7 +5,7 @@ django-leaflet==0.16.0
 elasticsearch==1.6.0
 geopy==1.10.0
 haystack==0.15
-ipython==3.2.1
+ipython==7.16.3
 psycopg2==2.6.1
 python-ptrace==0.8.1
 urllib3==1.11
